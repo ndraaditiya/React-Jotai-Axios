@@ -53,6 +53,7 @@ function App() {
               todoName={todoName}
               isComplete={isComplete}
             />
+            <hr />
           </div>
         ))}
       </div>
