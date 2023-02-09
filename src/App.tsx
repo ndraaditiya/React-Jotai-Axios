@@ -1,11 +1,9 @@
 import './App.css'
-import { useAtom, useAtomValue } from 'jotai/react'
+import { useAtom } from 'jotai/react'
 import { Todo, TodoPost } from './interfaces'
-// import { todos } from './state'
 import TodoItem from './components/TodoItem'
-import { useGetTodos } from './services'
 import { todosAtom } from './state'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getTodosFn, postTodoFn } from './config/api'
 
 function App() {
