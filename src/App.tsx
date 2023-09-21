@@ -17,17 +17,14 @@ function App() {
   const handleAddTodo = () => {
     const data: TodoPost = {
       todoName,
-      isComplete: false
+      isComplete: false,
     }
 
     postTodoFn(data).then((res) => {
       const { code, data: newData } = res
       if (code === 200) {
         setTodos((prevData) => {
-          return [
-            ...prevData,
-            newData
-          ]
+          return [...prevData, newData]
         })
         setTodoName('')
       } else {
@@ -37,25 +34,27 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className='App'>
       <h2>TODO APP</h2>
       <div>
         <p>
-          <input type='text' placeholder='Todo Name' onChange={(e) => setTodoName(e.target.value)} />
+          <input
+            type='text'
+            placeholder='Todo Name'
+            value={todoName}
+            onChange={(e) => setTodoName(e.target.value)}
+          />
           <button onClick={handleAddTodo}>Add Todo</button>
         </p>
       </div>
       <div className='container'>
-        {todos && todos.map(({ _id, todoName, isComplete }: Todo, i: number) => (
-          <div key={i}>
-            <TodoItem
-              _id={_id}
-              todoName={todoName}
-              isComplete={isComplete}
-            />
-            <hr />
-          </div>
-        ))}
+        {todos &&
+          todos.map(({ _id, todoName, isComplete }: Todo, i: number) => (
+            <div key={i}>
+              <TodoItem _id={_id} todoName={todoName} isComplete={isComplete} />
+              <hr />
+            </div>
+          ))}
       </div>
     </div>
   )
